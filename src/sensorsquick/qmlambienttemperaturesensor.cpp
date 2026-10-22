@@ -1,5 +1,6 @@
 // Copyright (C) 2016 Research In Motion
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 #include "qmlambienttemperaturesensor_p.h"
 #include <QtSensors/QAmbientTemperatureSensor>
 
@@ -68,7 +69,7 @@ QmlAmbientTemperatureReading::~QmlAmbientTemperatureReading()
 }
 
 /*!
-    \qmlproperty qreal AmbientTemperatureReading::temperature
+    \qmlproperty real AmbientTemperatureReading::temperature
     This property holds the ambient temperature in degree Celsius.
 
     Please see QAmbientTemperatureReading::temperature for information about this property.

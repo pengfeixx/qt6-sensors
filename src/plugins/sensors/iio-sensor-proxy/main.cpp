@@ -1,10 +1,12 @@
 // Copyright (C) 2016 Alexander Volkov <a.volkov@rusbitech.ru>
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "iiosensorproxyorientationsensor.h"
 #include "iiosensorproxylightsensor.h"
 #include "iiosensorproxycompass.h"
+#include "iiosensorproxyproximitysensor.h"
 
 #include <qsensorplugin.h>
 #include <qsensorbackend.h>
@@ -15,6 +17,8 @@
 
 #include <QtCore/QFile>
 #include <QtCore/QDebug>
+
+QT_BEGIN_NAMESPACE
 
 class IIOSensorProxySensorPlugin : public QObject, public QSensorPluginInterface, public QSensorBackendFactory
 {
@@ -31,6 +35,8 @@ public:
                 QSensorManager::registerBackend(QLightSensor::sensorType, IIOSensorProxyLightSensor::id, this);
             if (!QSensorManager::isBackendRegistered(QCompass::sensorType, IIOSensorProxyCompass::id))
                 QSensorManager::registerBackend(QCompass::sensorType, IIOSensorProxyCompass::id, this);
+            if (!QSensorManager::isBackendRegistered(QProximitySensor::sensorType, IIOSensorProxyProximitySensor::id))
+                QSensorManager::registerBackend(QProximitySensor::sensorType, IIOSensorProxyProximitySensor::id, this);
         }
     }
 
@@ -42,9 +48,13 @@ public:
             return new IIOSensorProxyLightSensor(sensor);
         else if (sensor->identifier() == IIOSensorProxyCompass::id)
             return new IIOSensorProxyCompass(sensor);
+        else if (sensor->identifier() == IIOSensorProxyProximitySensor::id)
+            return new IIOSensorProxyProximitySensor(sensor);
 
         return 0;
     }
 };
+
+QT_END_NAMESPACE
 
 #include "main.moc"

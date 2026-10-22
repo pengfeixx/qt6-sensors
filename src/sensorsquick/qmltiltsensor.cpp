@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qmltiltsensor_p.h"
 #include <QtSensors/qtiltsensor.h>
@@ -46,10 +47,10 @@ QSensor *QmlTiltSensor::sensor() const
 }
 
 /*!
-    \qmlmethod TiltSensor::calibrate()
+    \qmlmethod void TiltSensor::calibrate()
     Calibrate the tilt sensor.
 
-    Please see QTiltSensor::calibrate() for information about this property.
+    \sa QTiltSensor::calibrate()
 */
 void QmlTiltSensor::calibrate()
 {
@@ -83,7 +84,7 @@ QmlTiltSensorReading::~QmlTiltSensorReading()
 }
 
 /*!
-    \qmlproperty qreal TiltReading::yRotation
+    \qmlproperty real TiltReading::yRotation
     This property holds the amount of tilt on the Y axis.
 
     Please see QTiltReading::yRotation for information about this property.
@@ -100,7 +101,7 @@ QBindable<qreal> QmlTiltSensorReading::bindableYRotation() const
 }
 
 /*!
-    \qmlproperty qreal TiltReading::xRotation
+    \qmlproperty real TiltReading::xRotation
     This property holds the amount of tilt on the X axis.
 
     Please see QTiltReading::xRotation for information about this property.

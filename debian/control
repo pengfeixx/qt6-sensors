@@ -1,39 +1,39 @@
 Source: qt6-sensors
 Section: libs
-Priority: optional
 Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
 Uploaders: Patrick Franz <deltaone@debian.org>,
-           Lu YaNing <dluyaning@gmail.com>,
-           Simon Quigley <tsimonq2@debian.org>
-Build-Depends: cmake (>= 3.24~),
-               debhelper-compat (= 13),
+           Simon Quigley <tsimonq2@debian.org>,
+Build-Depends: debhelper-compat (= 13),
                dh-exec,
+               dh-sequence-pkgkde-symbolshelper,
+               dh-sequence-qmldeps,
+               cmake (>= 3.24~),
                libgl-dev,
                libssl-dev,
                libvulkan-dev [linux-any],
                ninja-build,
-               pkg-config,
                pkg-kde-tools,
-               qt6-base-dev (>= 6.8.0+dfsg~),
-               qt6-base-private-dev (>= 6.8.0+dfsg~),
-               qt6-declarative-dev (>= 6.8.0+dfsg~),
-               qt6-declarative-private-dev (>= 6.8.0+dfsg~),
-               qt6-svg-dev (>= 6.8.0~),
+               pkgconf,
+               qt6-base-dev (>= 6.11.2+dfsg~),
+               qt6-base-private-dev (>= 6.11.2+dfsg~),
+               qt6-declarative-dev (>= 6.11.2+dfsg~),
+               qt6-declarative-private-dev (>= 6.11.2+dfsg~),
+               qt6-svg-dev (>= 6.11.2~),
                xauth <!nocheck>,
                xvfb <!nocheck>,
-Build-Depends-Indep: qt6-base-dev (>= 6.8~) <!nodoc>,
-                     qt6-documentation-tools (>= 6.8~) <!nodoc>,
-Standards-Version: 4.6.2
+Build-Depends-Indep: qt6-base-dev (>= 6.11~) <!nodoc>,
+                     qt6-documentation-tools (>= 6.11~) <!nodoc>,
+Standards-Version: 4.7.4
 Homepage: https://www.qt.io/developers/
 Vcs-Browser: https://salsa.debian.org/qt-kde-team/qt6/qt6-sensors
 Vcs-Git: https://salsa.debian.org/qt-kde-team/qt6/qt6-sensors.git
-Rules-Requires-Root: no
 
 Package: libqt6sensors6
 Architecture: any
 Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends},
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
 Description: Qt 6 Sensors library
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -43,10 +43,12 @@ Description: Qt 6 Sensors library
 Package: qml6-module-qtsensors
 Architecture: any
 Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Breaks: libqt6sensorsquick6 (<< 6.8.0-2)
-Replaces: libqt6sensorsquick6 (<< 6.8.0-2)
+Pre-Depends: ${misc:Pre-Depends},
+Depends: ${misc:Depends},
+         ${qml6:Depends},
+         ${shlibs:Depends},
+Breaks: libqt6sensorsquick6 (<< 6.6.1-2)
+Replaces: libqt6sensorsquick6 (<< 6.6.1-2)
 Description: Qt 6 Sensors QML module
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -54,15 +56,13 @@ Description: Qt 6 Sensors QML module
  This package contains the Qt Sensors QML module for Qt Declarative.
 
 Package: qt6-sensors-dev
-Provides: libqt6sensors6-dev (= ${binary:Version})
 Section: libdevel
 Architecture: any
 Multi-Arch: same
 Depends: libqt6sensors6 (= ${binary:Version}),
+         qml6-module-qtsensors (= ${binary:Version}),
          qt6-base-dev,
          ${misc:Depends},
-Breaks: libqt6sensors6-dev (<< 6.4.1-2~)
-Replaces: libqt6sensors6-dev (<< 6.4.1-2~)
 Description: Qt 6 Sensors - development files
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -71,10 +71,12 @@ Description: Qt 6 Sensors - development files
  applications using Qt Sensors library.
 
 Package: qt6-sensors-doc
+Build-Profiles: <!nodoc>
 Architecture: all
 Multi-Arch: foreign
 Section: doc
-Depends: qt6-base-doc, ${misc:Depends},
+Depends: qt6-base-doc,
+         ${misc:Depends},
 Description: Qt 6 Sensors documentation
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -82,10 +84,12 @@ Description: Qt 6 Sensors documentation
  This package contains the documentation for Qt 6 Sensors.
 
 Package: qt6-sensors-doc-html
+Build-Profiles: <!nodoc>
 Architecture: all
 Multi-Arch: foreign
 Section: doc
-Depends: qt6-base-doc-html, ${misc:Depends},
+Depends: qt6-base-doc-html,
+         ${misc:Depends},
 Description: Qt 6 Sensors HTML documentation
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -93,10 +97,12 @@ Description: Qt 6 Sensors HTML documentation
  This package contains the HTML documentation for Qt 6 Sensors.
 
 Package: qt6-sensors-doc-dev
+Build-Profiles: <!nodoc>
 Architecture: all
 Multi-Arch: foreign
 Section: libdevel
-Depends: qt6-base-doc-dev, ${misc:Depends},
+Depends: qt6-base-doc-dev,
+         ${misc:Depends},
 Description: Qt 6 Sensors tags files
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.
@@ -108,7 +114,8 @@ Package: qt6-sensors-examples
 Architecture: any
 Multi-Arch: same
 Section: misc
-Depends: ${misc:Depends}, ${shlibs:Depends},
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
 Description: Qt 6 Sensors examples
  Qt is a cross-platform C++ application framework. Qt's primary feature
  is its rich set of widgets that provide standard GUI functionality.

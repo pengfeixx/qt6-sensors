@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qtapsensor.h"
 #include "qtapsensor_p.h"
@@ -23,6 +24,8 @@ IMPLEMENT_READING(QTapReading)
     The axes are arranged as follows.
 
     \image sensors-coordinates2.jpg
+           {Device with positive and negative x, y, and z tap axes
+           extending in all six directions}
 
     By default it returns only double tap events. The QTapSensor::returnDoubleTapEvents property
     must be set to false to return individual tap events.

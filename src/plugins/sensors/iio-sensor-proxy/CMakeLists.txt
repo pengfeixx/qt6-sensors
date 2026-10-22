@@ -5,6 +5,13 @@
 ## IIOSensorProxySensorPlugin Plugin:
 #####################################################################
 
+get_target_property(qt_namespace Qt6::Core QT_NAMESPACE)
+if(qt_namespace)
+    set(iio_dbus_namespace "${qt_namespace}::QtSensorsPrivate")
+else()
+    set(iio_dbus_namespace "QtSensorsPrivate")
+endif()
+
 qt_internal_add_plugin(IIOSensorProxySensorPlugin
     OUTPUT_NAME qtsensors_iio-sensor-proxy
     PLUGIN_TYPE sensors
@@ -13,6 +20,7 @@ qt_internal_add_plugin(IIOSensorProxySensorPlugin
         iiosensorproxylightsensor.cpp iiosensorproxylightsensor.h
         iiosensorproxyorientationsensor.cpp iiosensorproxyorientationsensor.h
         iiosensorproxysensorbase.cpp iiosensorproxysensorbase.h
+        iiosensorproxyproximitysensor.cpp iiosensorproxyproximitysensor.h
         main.cpp
     NO_UNITY_BUILD_SOURCES
         # Duplicate symbol definition between, iiosensorproxycompass.cpp, and
@@ -20,12 +28,14 @@ qt_internal_add_plugin(IIOSensorProxySensorPlugin
         # TODO: dbusPath() can probably be implemented as a static data member
         iiosensorproxylightsensor.cpp
         iiosensorproxyorientationsensor.cpp
+        iiosensorproxyproximitysensor.cpp
     DBUS_INTERFACE_SOURCES
         org.freedesktop.DBus.Properties.xml
         net.hadess.SensorProxy.xml
         net.hadess.SensorProxy.Compass.xml
     DBUS_INTERFACE_FLAGS
         "-N"
+        --namespace "${iio_dbus_namespace}"
     LIBRARIES
         Qt::Core
         Qt::DBus

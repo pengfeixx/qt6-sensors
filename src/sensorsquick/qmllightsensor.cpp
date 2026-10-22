@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qmllightsensor_p.h"
 #include <QtSensors/QLightSensor>
@@ -44,7 +45,7 @@ QSensor *QmlLightSensor::sensor() const
 }
 
 /*!
-    \qmlproperty qreal LightSensor::fieldOfView
+    \qmlproperty real LightSensor::fieldOfView
     This property holds a value indicating the field of view.
 
     Please see QLightSensor::fieldOfView for information about this property.
@@ -82,7 +83,7 @@ QmlLightSensorReading::~QmlLightSensorReading()
 }
 
 /*!
-    \qmlproperty qreal LightReading::illuminance
+    \qmlproperty real LightReading::illuminance
     This property holds the light level.
 
     Please see QLightReading::illuminance for information about this property.

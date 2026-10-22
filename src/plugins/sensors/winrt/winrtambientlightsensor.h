@@ -1,5 +1,6 @@
 // Copyright (C) 2017 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #ifndef WINRTAMBIENTLIGHTSENSOR_H
 #define WINRTAMBIENTLIGHTSENSOR_H
@@ -7,7 +8,7 @@
 #include <QtSensors/QSensorBackend>
 #include <QtCore/QScopedPointer>
 
-QT_USE_NAMESPACE
+QT_BEGIN_NAMESPACE
 
 class WinRtAmbientLightSensorPrivate;
 class WinRtAmbientLightSensor : public QSensorBackend
@@ -24,5 +25,7 @@ private:
     QScopedPointer<WinRtAmbientLightSensorPrivate> d_ptr;
     Q_DECLARE_PRIVATE(WinRtAmbientLightSensor)
 };
+
+QT_END_NAMESPACE
 
 #endif // WINRTAMBIENTLIGHTSENSOR_H

@@ -1,13 +1,20 @@
 // Copyright (C) 2016 Alexander Volkov <a.volkov@rusbitech.ru>
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:critical reason:ipc
 
 #ifndef IIOSENSORPROXY_SENSORBASE_H
 #define IIOSENSORPROXY_SENSORBASE_H
 
 #include <qsensorbackend.h>
 
+QT_BEGIN_NAMESPACE
+
+namespace QtSensorsPrivate {
+
 class OrgFreedesktopDBusPropertiesInterface;
+
+} // namespace QtSensorsPrivate
 
 class IIOSensorProxySensorBase : public QSensorBackend
 {
@@ -33,8 +40,12 @@ private slots:
 
 private:
     bool m_serviceRunning;
-    OrgFreedesktopDBusPropertiesInterface *m_propertiesInterface;
+    QtSensorsPrivate::OrgFreedesktopDBusPropertiesInterface *m_propertiesInterface;
     QString m_dbusInterface;
 };
 
+
+QT_END_NAMESPACE
+
 #endif // IIOSENSORPROXY_SENSORBASE_H
+

@@ -1,6 +1,7 @@
 // Copyright (C) 2016 Alexander Volkov <a.volkov@rusbitech.ru>
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #ifndef IIOSENSORPROXY_COMPASS_H
 #define IIOSENSORPROXY_COMPASS_H
@@ -9,7 +10,13 @@
 
 #include <qcompass.h>
 
+QT_BEGIN_NAMESPACE
+
+namespace QtSensorsPrivate {
+
 class NetHadessSensorProxyCompassInterface;
+
+} // namespace QtSensorsPrivate
 
 class IIOSensorProxyCompass : public IIOSensorProxySensorBase
 {
@@ -30,7 +37,11 @@ private:
     void updateAzimuth(double azimuth);
 
     QCompassReading m_reading;
-    NetHadessSensorProxyCompassInterface *m_sensorProxyInterface;
+    QtSensorsPrivate::NetHadessSensorProxyCompassInterface *m_sensorProxyInterface;
 };
 
+
+QT_END_NAMESPACE
+
 #endif // IIOSENSORPROXY_COMPASS_H
+

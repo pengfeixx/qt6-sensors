@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qorientationsensor.h"
 #include "qorientationsensor_p.h"
@@ -38,10 +39,14 @@ IMPLEMENT_READING(QOrientationReading)
     To explain the meaning of each value it is helpful to refer to the following diagram.
 
     \image sensors-sides.jpg
+           {Device with the Top, Left, Right, and Face edges
+           labeled}
 
     The orientations are shown here in order: TopUp, TopDown, LeftUp, RightUp, FaceUp, FaceDown.
 
     \image sensors-orientation.jpg
+           {Device shown in the TopUp, TopDown, LeftUp, RightUp, FaceUp, and
+           FaceDown orientations}
 
     \value Undefined        The orientation is unknown.
     \value TopUp            The Top edge of the device is pointing up.

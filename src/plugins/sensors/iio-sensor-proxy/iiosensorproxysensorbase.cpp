@@ -1,16 +1,21 @@
 // Copyright (C) 2016 Alexander Volkov <a.volkov@rusbitech.ru>
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:critical reason:ipc
 
 #include "iiosensorproxysensorbase.h"
-#include "sensorproxy_interface.h"
-#include "properties_interface.h"
+#include "sensorproxy_interface_p.h"
+#include "properties_interface_p.h"
 
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusServiceWatcher>
 #include <QtDBus/QDBusConnectionInterface>
 
 #include <time.h>
+
+QT_BEGIN_NAMESPACE
+
+using namespace QtSensorsPrivate;
 
 quint64 IIOSensorProxySensorBase::produceTimestamp()
 {
@@ -75,3 +80,5 @@ void IIOSensorProxySensorBase::propertiesChanged(const QString &interface,
     if (interface == m_dbusInterface)
         updateProperties(changedProperties);
 }
+
+QT_END_NAMESPACE

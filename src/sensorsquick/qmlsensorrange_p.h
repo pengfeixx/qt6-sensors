@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #ifndef QMLSENSORRANGE_P_H
 #define QMLSENSORRANGE_P_H
@@ -59,13 +60,13 @@ public:
     ~QmlSensorOutputRange();
 
     qreal minimum() const;
-    void setMinimum(int mini) { min = mini; }
+    void setMinimum(qreal mini) { min = mini; }
 
     qreal maximum() const;
-    void setMaximum(int maxi) { max = maxi; }
+    void setMaximum(qreal maxi) { max = maxi; }
 
     qreal accuracy() const;
-    void setAccuracy(int accu) { acc = accu; }
+    void setAccuracy(qreal accu) { acc = accu; }
 
 private:
     qreal min;

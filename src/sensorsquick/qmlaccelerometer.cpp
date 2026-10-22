@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qmlaccelerometer_p.h"
 #include <QtSensors/QAccelerometer>
@@ -91,7 +92,7 @@ QmlAccelerometerReading::~QmlAccelerometerReading()
 }
 
 /*!
-    \qmlproperty qreal AccelerometerReading::x
+    \qmlproperty real AccelerometerReading::x
     This property holds the acceleration on the X axis.
 
     Please see QAccelerometerReading::x for information about this property.
@@ -108,7 +109,7 @@ QBindable<qreal> QmlAccelerometerReading::bindableX() const
 }
 
 /*!
-    \qmlproperty qreal AccelerometerReading::y
+    \qmlproperty real AccelerometerReading::y
     This property holds the acceleration on the Y axis.
 
     Please see QAccelerometerReading::y for information about this property.
@@ -125,7 +126,7 @@ QBindable<qreal> QmlAccelerometerReading::bindableY() const
 }
 
 /*!
-    \qmlproperty qreal AccelerometerReading::z
+    \qmlproperty real AccelerometerReading::z
     This property holds the acceleration on the Z axis.
 
     Please see QAccelerometerReading::z for information about this property.

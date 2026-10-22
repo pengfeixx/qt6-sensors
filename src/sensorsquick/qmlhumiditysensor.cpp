@@ -1,5 +1,6 @@
 // Copyright (C) 2016 Canonical Ltd
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qmlhumiditysensor_p.h"
 #include <QtSensors/QHumiditySensor>
@@ -70,7 +71,7 @@ QmlHumidityReading::~QmlHumidityReading()
 }
 
 /*!
-    \qmlproperty qreal HumidityReading::relativeHumidity
+    \qmlproperty real HumidityReading::relativeHumidity
     This property holds the relative humidity as a percentage.
 
     Please see QHumidityReading::relativeHumidity for information about this property.
@@ -87,7 +88,7 @@ QBindable<qreal> QmlHumidityReading::bindableRelativeHumidity() const
 }
 
 /*!
-    \qmlproperty qreal HumidityReading::absoluteHumidity
+    \qmlproperty real HumidityReading::absoluteHumidity
     This property holds the absolute humidity in grams per cubic meter (g/m3).
 
     Please see QHumidityReading::absoluteHumidity for information about this property.

@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qmlcompass_p.h"
 #include <QtSensors/QCompass>
@@ -68,7 +69,7 @@ QmlCompassReading::~QmlCompassReading()
 }
 
 /*!
-    \qmlproperty qreal CompassReading::azimuth
+    \qmlproperty real CompassReading::azimuth
     This property holds the azimuth of the device.
 
     Please see QCompassReading::azimuth for information about this property.
@@ -85,7 +86,7 @@ QBindable<qreal> QmlCompassReading::bindableAzimuth() const
 }
 
 /*!
-    \qmlproperty qreal CompassReading::calibrationLevel
+    \qmlproperty real CompassReading::calibrationLevel
     This property holds the calibration level of the reading.
 
     Please see QCompassReading::calibrationLevel for information about this property.

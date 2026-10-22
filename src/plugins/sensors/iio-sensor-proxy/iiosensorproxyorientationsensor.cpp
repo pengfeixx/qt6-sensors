@@ -1,11 +1,16 @@
 // Copyright (C) 2016 Alexander Volkov <a.volkov@rusbitech.ru>
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:critical reason:ipc
 
 #include "iiosensorproxyorientationsensor.h"
-#include "sensorproxy_interface.h"
+#include "sensorproxy_interface_p.h"
 
 #include <QtDBus/QDBusPendingReply>
+
+QT_BEGIN_NAMESPACE
+
+using namespace QtSensorsPrivate;
 
 char const * const IIOSensorProxyOrientationSensor::id("iio-sensor-proxy.orientationsensor");
 
@@ -72,3 +77,5 @@ void IIOSensorProxyOrientationSensor::updateOrientation(const QString &orientati
     m_reading.setTimestamp(produceTimestamp());
     newReadingAvailable();
 }
+
+QT_END_NAMESPACE

@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qmlirproximitysensor_p.h"
 #include <QtSensors/QIRProximitySensor>
@@ -68,7 +69,7 @@ QmlIRProximitySensorReading::~QmlIRProximitySensorReading()
 }
 
 /*!
-    \qmlproperty qreal IRProximityReading::reflectance
+    \qmlproperty real IRProximityReading::reflectance
     This property holds the reflectance value.
 
     Please see QIRProximityReading::reflectance for information about this property.

@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qsensor.h"
 #include "qsensor_p.h"
@@ -583,8 +584,8 @@ void QSensor::setDataRate(int rate)
 /*!
    Checks if a specific feature is supported by the backend.
 
-   QtSensors supports a rich API for controlling and providing information about sensors. Naturally,
-   not all of this functionality can be supported by all of the backends.
+   \l[Cpp]{QtSensors} supports a rich API for controlling and providing information about sensors.
+   Naturally, not all of this functionality can be supported by all of the backends.
 
    To check if the current backend supports the feature \a feature, call this function.
 
@@ -1323,17 +1324,7 @@ void QSensorReading::copyValuesFrom(QSensorReading *other)
 
     This macro should be used for all reading classes. Pass the \a classname of your reading class.
 
-    \code
-    class MyReading : public QSensorReading
-    {
-        \Q_OBJECT
-        Q_PROPERTY(qreal myprop READ myprop)
-        DECLARE_READING(MyReading)
-    public:
-        qreal myprop() const;
-        vod setMyprop(qreal myprop);
-    };
-    \endcode
+    \snippet sensors/myreading.cpp MyReading-Declaration
 
     \sa IMPLEMENT_READING()
 */
@@ -1346,9 +1337,7 @@ void QSensorReading::copyValuesFrom(QSensorReading *other)
     This macro should be used for all reading classes. It should be placed into a single compilation
     unit (source file), not into a header file. Pass the \a classname of your reading class.
 
-    \code
-    IMPLEMENT_READING(MyReading)
-    \endcode
+    \snippet sensors/myreading.cpp IMPLEMENT_READING_MyReading
 
     \sa DECLARE_READING()
 */

@@ -1,5 +1,6 @@
 // Copyright (C) 2017 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "winrtaccelerometer.h"
 #include "winrtcommon.h"
@@ -17,7 +18,7 @@ using namespace ABI::Windows::Devices::Sensors;
 
 typedef ITypedEventHandler<Accelerometer *, AccelerometerReadingChangedEventArgs *> AccelerometerReadingHandler;
 
-QT_USE_NAMESPACE
+QT_BEGIN_NAMESPACE
 
 #define GRAVITY_EARTH_MS2 9.80665
 
@@ -181,3 +182,5 @@ void WinRtAccelerometer::stop()
     }
     d->token.value = 0;
 }
+
+QT_END_NAMESPACE

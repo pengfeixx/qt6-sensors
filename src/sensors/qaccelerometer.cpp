@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:significant reason:default
 
 #include "qaccelerometer.h"
 #include "qaccelerometer_p.h"
@@ -22,6 +23,8 @@ IMPLEMENT_READING(QAccelerometerReading)
     The axes are arranged as follows.
 
     \image sensors-coordinates2.jpg
+           {Device with positive and negative x, y, and z
+           acceleration axes extending in all six directions}
 
     A monoblock device sitting at rest, face up on a desk will experience
     a force of approximately 9.8 on the Z axis (ie. towards the roof).

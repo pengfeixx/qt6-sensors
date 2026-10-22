@@ -1,6 +1,7 @@
 // Copyright (C) 2021 The Qt Company Ltd.
 // Copyright (C) 2019 BogDan Vatra <bogdan@kde.org>
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+// Qt-Security score:critical reason:execute-external-code
 #include "sensormanager.h"
 #include <QtCore/qcoreapplication.h>
 #include <QtCore/qjnitypes.h>
@@ -90,7 +91,13 @@ void SensorManager::run()
     m_looper = ALooper_prepare(0);
     m_waitForStart.release();
     do {
-        if (ALooper_pollAll(5 /*ms*/, nullptr, nullptr, nullptr) == ALOOPER_POLL_TIMEOUT)
+        // Result can be also ALOOPER_POLL_CALLBACK or identifier, those are ignored.
+        int result = ALooper_pollOnce(5 /*ms*/, nullptr, nullptr, nullptr);
+        if (result == ALOOPER_POLL_TIMEOUT || result == ALOOPER_POLL_WAKE) {
             QThread::yieldCurrentThread();
+        } else if (result == ALOOPER_POLL_ERROR) {
+            qCritical("SensorManager::run() ALooper_pollOnce() returned ALOOPER_POLL_ERROR");
+            break;
+        }
     } while (!m_quit.loadRelaxed());
 }
